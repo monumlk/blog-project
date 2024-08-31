@@ -32,8 +32,8 @@
         <div class="menu_main">
             <ul>
                 <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="{{ url('/') }}">About</a></li>
+                <li><a href="{{ url('/') }}">Blog</a></li>
                 @auth
                     <li>
                         <x-app-layout />
