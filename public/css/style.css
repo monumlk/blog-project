@@ -157,11 +157,6 @@ a,
     transition: all .3s ease-in-out;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
  :focus {
     outline: 0;
 }
@@ -230,7 +225,9 @@ button {
 
 .header_section {
     width: 100%;
-    float: left;
+    /* float: left; */
+    display: flex;
+    flex-direction: column;
     background-image: url(../images/banner-bg.png);
     height: auto;
     background-size: 100%;
@@ -352,6 +349,7 @@ button {
     width: 100%;
     float: left;
     padding-bottom: 305px;
+    color: yellowgreen;
 }
 
 .banner_taital {
@@ -1012,4 +1010,19 @@ button {
 
 .copyright_text a:hover {
     color: #e27141;
+}
+
+.h-300px {
+    height: 300px;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+.object-fit-contain {
+    object-fit: contain;
+}
+
+.h-60px {
+    height: 60px;
 }

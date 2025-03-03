@@ -12,6 +12,7 @@
             <li class="active"><a href="{{'/'}}"> <i class="icon-home"></i>Home </a></li>
             <li><a href="{{url('post_page')}}"> <i class="icon-grid"></i>Add Post </a></li>
             <li><a href="{{url('/show_post')}}"> <i class="fa fa-bar-chart"></i> Show Post</a></li>
+            <li><a href="{{url('/showcontact')}}"> <i class="fa fa-bar-chart"></i> Contact show</a></li>
             <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
             <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
               <ul id="exampledropdownDropdown" class="collapse list-unstyled ">

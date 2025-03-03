@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function unseenMessages()
+    {
+        return $this->hasMany(ChMessage::class, 'to_id', 'id')
+            ->where('seen', 0);
+    }
 }

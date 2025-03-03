@@ -23,12 +23,14 @@
                     {{ session()->get('message') }}
                 </div>
             @endif
-            <table class="table">
-                <div class="col-md-6">
+                 <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Creted</th>
                             <th scope="col">post title</th>
-                            <th scope="col">description</th>
+                            <th scope="col" width="300px">description</th>
                             <th scope="col">Post by</th>
                             <th scope="col">post status</th>
                             <th scope="col">usertype</th>
@@ -37,14 +39,16 @@
                             <th scope="col">Edit</th>
                             <th>Status Accept</th>
                             <th>Status Reject</th>
+                            <th>price</th>
                         </tr>
                     </thead>
                 </div>
                 <tbody>
-                    @foreach ($post as $post)
+                    @foreach ($posts as $post)
                         <tr>
+                            <td>{{ $post->created_at}}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->description }}</td>
+                            <td>{{ str($post->description)->limit(150) }}</td>
                             <td>{{ $post->name }}</td>
                             <td>{{ $post->post_status }}</td>
                             <td>{{ $post->usertype }}</td>
@@ -59,35 +63,42 @@
                                 <a href="{{ url('updatepage', $post->id) }}" class="btn btn-success">Edit</a>
                             </td>
                             <td>
-                                <a onclick="confirm('Are You Sure To Accept this Post')" href="{{url('acceptpost',$post->id)}}" class="btn btn-outline-secondary">Accept</a>
+                                <a onclick="confirm('Are You Sure To Accept this Post')"
+                                    href="{{ url('acceptpost', $post->id) }}"
+                                    class="btn btn-outline-secondary">Accept</a>
                             </td>
                             <td>
-               <a onclick="return confirm('Are You Sure To Reject this Post ?')" href="{{url('rejectpost',$post->id)}}" class="btn btn-primary">Reject</a>
+                                <a onclick="return confirm('Are You Sure To Reject this Post ?')"
+                                    href="{{ url('rejectpost', $post->id)}}" class="btn btn-primary">Reject</a>
                             </td>
+                              <td>{{ $post->price}}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+                 </div>
+            <div class="row">
+                {!! $posts->links() !!}
+            </div>
         </div>
-        @include('admin.footer')
-        <script type="text/javascript">
-            function confirmation(ev) {
-                ev.preventDefault();
-                var urlToRedirect = ev.currentTarget.getAttribute('href');
-                swal({
-                        title: "Are You sure to delete this ?",
-                        text: "you won't to able to revert this delete",
-                        icon: "warring",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((withCancel) => {
-                        if (withCancel) {
-                            window.location.href = urlToRedirect;
-                        }
-                    });
-            }
-        </script>
+            <script type="text/javascript">
+                function confirmation(ev) {
+                    ev.preventDefault();
+                    var urlToRedirect = ev.currentTarget.getAttribute('href');
+                    swal({
+                            title: "Are You sure to delete this ?",
+                            text: "you won't to able to revert this delete",
+                            icon: "warring",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((withCancel) => {
+                            if (withCancel) {
+                                window.location.href = urlToRedirect;
+                            }
+                        });
+                }
+            </script>
 </body>
 
 </html>

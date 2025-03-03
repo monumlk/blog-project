@@ -36,6 +36,13 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
+                                <x-dropdown-link :href="url('mypost')">
+                                    {{ __(' mypost') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="url('createpost')">
+                                    {{ __(' createpost') }}
+                                </x-dropdown-link>
+        
         
                                 <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
@@ -43,6 +50,7 @@
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
+                           
                         </x-slot>
                     </x-dropdown>
                 </div>

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class checkAdminRole
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,14 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-          if(Auth()->user()->usertype=='admin'){
-            return $next($request);
-          }
-          abort(401);
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        if (auth()->user()->usertype !== 'admin') {
+            return redirect()->route('olx')->withErrors('You are not allowed to access this page');
+        }
+        
+        return $next($request);
     }
 }

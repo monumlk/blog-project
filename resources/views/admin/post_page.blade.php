@@ -3,9 +3,7 @@
 
 <head>
     @include('admin.css')
-
 </head>
-
 <body>
     @include('admin.header')
     <div class="d-flex align-items-stretch">
